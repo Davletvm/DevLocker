@@ -1,0 +1,66 @@
+<h1>Control Panel</h1>
+<p>Welcome to your control panel. Here you can change your account details by filling out the appropriate boxes. Leave boxes blank if you don't want to change them.</p>
+
+<FORM action="control_panel.php" method="post">
+  <table>
+    <tr>
+      <td>Change First Name:</td>
+    </tr>
+    <tr>
+      <td><input type="text" name="fname" value="{FORM_FNAME}" /></td>
+    </tr>
+	
+    <tr>
+      <td>Change Last Name:</td>
+    </tr>
+    <tr>
+      <td><input type="text" name="lname" value="{FORM_LNAME}" /></td>
+    </tr>
+	
+    <tr>
+      <td>Change Email Address:</td>
+    </tr>
+    <tr>
+      <td><input type="text" name="newemail1" value="{FORM_EMAIL}" /></td>
+    </tr>
+    
+    
+    <tr>
+      <td>Confirm Email Address:</td>
+    </tr>
+    <tr>
+      <td><input type="text" name="newemail2"/></td>
+    </tr>
+    
+    
+    <tr>
+      <td>New Password:</td>
+    </tr>
+    <tr>
+      <td><input type="password" name="newpass1"/></td>
+    </tr>
+    
+    
+    <tr>
+      <td>Confirm New Password:</td>
+    </tr>
+    <tr>
+      <td><input type="password" name="newpass2"/></td>
+    </tr>
+    
+    
+    <tr>
+      <td>Current Password:</td>
+    </tr>
+    <tr>
+      <td><input type="password" name="pass"/></td>
+    </tr>
+	
+    <tr>
+      <td></td>
+      <td class="error">{ERRORS}</td>
+    </tr>
+  </table>
+  <p><input type="submit" value="Save Changes" name="update" id="submit"/></p>
+<p>{MESSAGE}</p>
+</FORM>

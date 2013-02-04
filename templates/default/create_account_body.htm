@@ -1,0 +1,46 @@
+<h1>Create an Account</h1>
+<p>Please enter the following information to create an account, then hit submit. You will then receive an email telling you what to do next.<p>
+<FORM action="create_account.php" method="post">
+  <table>
+    <tr>
+      <td>Username*:</td>
+      <td><input type="text" name="user" value="{FORM_USER}" /></td>
+    </tr>
+    <tr>
+      <td>Email Address*:</td>
+      <td><input type="text" name="email" value="{FORM_EMAIL}" /></td>
+    </tr>
+    <tr>
+      <td>Confirm Email*:</td>
+      <td><input type="text" name="email_conf" value="{FORM_EMAIL_CONF}" /></td>
+    </tr>
+    <tr>
+      <td>Password*:</td>
+      <td><input type="password" name="pass" value="{FORM_PASS}" /></td>
+    </tr>
+    <tr>
+      <td>Confirm Password*:</td>
+      <td><input type="password" name="pass_conf" value="{FORM_PASS_CONF}" /></td>
+    </tr>
+    <tr>
+      <td>First Name:</td>
+      <td><input type="text" name="fname" value="{FORM_FNAME}" /></td>
+    </tr>
+    <tr>
+      <td>Last Name:</td>
+      <td><input type="text" name="lname" value="{FORM_LNAME}" /></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>* = Required fields</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td class="error">{ERRORS}</td>
+    </tr>
+  </table>
+  <br/>
+  <input type="submit" name="formsubmit" id="submit" value="Create Account" />
+  or
+  <a href="index.php"><button>Sign In</button></a>
+</FORM>

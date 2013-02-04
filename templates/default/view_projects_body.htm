@@ -1,0 +1,62 @@
+<h1>Your Projects</h1>
+<p>Below is a list of projects of which you are the owner. </p>
+<table border="0" width="100%">
+  <tr>
+    <td></td>
+    <td>Name</td>
+    <td>Owner</td>
+    <td>Created On</td>
+  </tr>
+<!-- BEGIN project_row -->
+  <tr>
+    <td></td>
+    <td><a href="view_modules.php?pid={project_row.PROJECT_ID}">{project_row.PROJECT_NAME}</a></td>
+    <td><a href="view_profile.php?uid={project_row.USER_ID}">{project_row.USERNAME}</a></td>
+    <td>{project_row.CREATION_DATE}</td>
+  </tr>
+<!-- END project_row -->
+</table>
+<br/><br/>
+
+<h1>Projects you are a Member of</h1>
+<p>Below is a list of all of the projects of which you are a member.</p>
+<table border="0" width=100%>
+  <tr>
+    <td></td>
+    <td>Name</td>
+    <td>Owner</td>
+    <td>Created On</td>
+  </tr>
+<!-- BEGIN project_other_row -->
+  <tr>
+    <td></td>
+    <td><a href="view_modules.php?pid={project_other_row.PROJECT_ID}">{project_other_row.PROJECT_NAME}</a></td>
+    <td><a href="view_profile.php?p=uid={project_other_row.USER_ID}">{project_other_row.USERNAME}</a></td>
+    <td>{project_other_row.CREATION_DATE}</td>
+  </tr>
+<!-- END project_other_row -->
+</table>
+<br/><br/>
+
+<h1>Pending Invites</h1>
+<p>Below is a list of projects to which you have been invited.</p>
+<table border="0" width=100%>
+  <tr>
+    <td></td>
+    <td>Name</td>
+    <td>Owner</td>
+    <td>Created On</td>
+    <td>Accept</td>
+    <td>Reject</td>
+  </tr>
+<!-- BEGIN invited_row -->
+  <tr>
+    <td></td>
+    <td><a href="view_modules.php?pid={project_other_row.PROJECT_ID}">{invited_row.PROJECT_NAME}</a></td>
+    <td><a href="view_profile.php?p=uid={project_other_row.USER_ID}">{invited_row.USERNAME}</a></td>
+    <td>{invited_row.CREATION_DATE}</td>
+    <td><a href="view_projects.php?action=accept&pid={invited_row.PROJECT_ID}"><button type="button" id="submit">Accept</button></a></td>
+    <td><a href="view_projects.php?action=reject&pid={invited_row.PROJECT_ID}"><button type="button" id="submit">Reject</button></a></td>
+  </tr>
+<!-- END invited_row -->
+</table>

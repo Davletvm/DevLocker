@@ -1,0 +1,23 @@
+<b>Currently Viewing:</b>  <a href="view_modules.php?pid={PROJECT_ID}">{PROJECT_NAME}</a> => <a href="view_files.php?mid={ENTITY_ID}">{ENTITY_NAME}</a> => {FILE_NAME}
+<br /><br />
+File History:<br/>
+<table border="0" width="700" cellpadding="5px">
+  <tr>
+    <td></td>
+    <td>Revision #</td>
+    <td>Name</td>
+    <td>File Size</td>
+    <td>Last Edited</td>
+  </tr>
+	<!-- BEGIN file_row -->
+  <tr>
+    <td></td>
+    <td>{file_row.REV_NUM}</td>
+    <td><a href="download.php?fid={file_row.FILE_ID}">{file_row.FILE_NAME}</a></td>
+    <td>{file_row.FILE_SIZE}</td>
+    <td>{file_row.EDIT_DATE} by <a href="view_profile?uid={file_row.EDITOR_ID}">{file_row.EDITOR_NAME}</a></td>
+  </tr>
+	<!-- END file_row -->
+</table>
+<br/>
+<a href="view_files.php?mid={ENTITY_ID}">Return to View Files in this Module</a>

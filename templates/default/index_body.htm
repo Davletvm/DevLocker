@@ -1,0 +1,31 @@
+<h1>Login to DEVLocker?</h1>
+<p>Manage your projects, collaborate with your partners, and more with <i><b>DEVLocker</b></i> joining is simple and 
+free and members can access their projects from virtually anywhere using our online storage system.
+DEVLocker, a new way to collaborate.</p>
+
+<FORM action="index.php" method="post">
+  <table>
+    <tr><td>Username:</td><td><input type="text" name="user"/></td></tr>
+    <tr><td>Password:</td><td><input type="password" name="pass"/></td></tr>
+  </table>
+  <input type="hidden" name="login"/>
+  <input type="submit" value="Login" id="submit"/>
+</FORM>
+<a href="create_account.php"><button>Create Account</button></a>
+<a href="index.php?forgotPass=true"><button>Forgot Password?</button></a>
+
+<!-- BEGIN forgot_password -->
+<br/><br/><br/>
+Forgot your password?<br/>
+Please enter your account name here:<br/><br/>
+<FORM action="index.php" method = "post">
+  &nbsp;<input type="text" name="user"/><br/>
+  &nbsp;<input type="submit" value="Submit" id="submit"/>
+</FORM>
+<!-- END forgot_password -->
+
+<!-- BEGIN recovered_password -->
+<br/><br/>
+An email has been sent to the email associated with your account.<br/><br/>
+Please check your email in order to recover your password.
+<!-- END recovered_password -->

@@ -1,0 +1,19 @@
+<FORM action="create_project.php" method="post">
+  <h1>Create A New Project</h1>
+  <p>Please use the following form to create a new project, enter the project name and a description of your project to continue.</p>
+  <table>
+    <tr>
+      <td>Project Name:</td>
+      <td><input type="text" name="name" value="{NAME}" /></td>
+    </tr>
+    <tr>
+      <td>Project Description:</td>
+      <td><textarea name="desc" rows="8" cols="60">{DESC}</textarea>
+    </tr>
+    <tr>
+      <td></td>
+      <td>{ERRORS}</td>
+    </tr>
+  </table>
+  <input type="submit" name="formsubmit" value="Create Project" id="submit" />
+</FORM>

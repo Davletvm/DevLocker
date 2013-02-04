@@ -1,0 +1,77 @@
+<HTML>
+
+<FORM METHOD = 'POST'>
+Search
+<INPUT NAME ='search' TYPE = TEXT  SIZE = 100\><BR\>
+<INPUT NAME = 'type' TYPE = RADIO VALUE = 'Full Text'SIZE = 100\>Full Text <BR\>
+<INPUT NAME = 'type' TYPE = RADIO VALUE = 'Meta Text'SIZE = 100\>Meta Text <BR\>
+<INPUT NAME = 'type' TYPE = RADIO VALUE = 'Both'SIZE = 100\>Both<BR\>
+<INPUT TYPE = 'SUBMIT' VALUE = 'GO' \>
+</FORM>
+
+<?php
+
+include("db.php");
+
+function fullText($search)
+{
+	echo "<P><B> Full Text </B></P>";
+	$query = "SELECT id_word FROM words WHERE word LIKE '%{$search}%'";
+	$word_id = mysql_fetch_assoc(mysql_query($query));
+	$word_id = $word_id['id_word'];
+	
+	$query = "SELECT DISTINCT * FROM files_word WHERE id_word LIKE '{$word_id}' ORDER BY count DESC";
+	$c = mysql_query($query);
+	
+	while($file_id = mysql_fetch_assoc($c))
+	{
+		$file_id = $file_id['id_file'];
+		$query = "SELECT * FROM files WHERE id_file = {$file_id}";
+		$file = mysql_fetch_assoc(mysql_query($query));
+		echo "<a href = '".$file['url']."'>".$file['name']."</a> <BR> ";
+		
+	}
+
+
+}
+
+function metaText($search)
+{
+	echo "<P><B> Meta </B></P>";
+	$query = "SELECT * FROM meta WHERE content LIKE '%{$search}%'";
+	$c = mysql_query($query);
+	
+	while($file_id = mysql_fetch_assoc($c))
+	{
+		$file_id = $file_id['id_file'];
+		
+		$query = "SELECT * FROM files WHERE id_file = {$file_id}";
+		$file = mysql_fetch_assoc(mysql_query($query));
+		echo "<a href = '".$file['url']."'>".$file['name']."</a> <BR> ";
+		
+	}
+
+}
+
+dbconnect();
+$type = $_POST['type'];
+$search = $_POST['search'];
+$search = strip_tags($search);
+echo "<p>You Searched: ".$search."</p>";
+if($type == 'Full Text')
+{
+	fullText($search);
+}
+elseif($type == 'Meta Text')
+{
+	metaText($search);
+}
+else
+{
+	fullText($search);
+	metaText($search);
+	
+}
+?>
+
+</HTML>

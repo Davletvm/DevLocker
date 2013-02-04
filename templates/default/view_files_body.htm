@@ -1,0 +1,84 @@
+<h3>Currently Viewing: <a href="view_modules.php?pid={PROJECT_ID}">{PROJECT_NAME}</a> => {ENTITY_NAME}</h3>
+<br/>
+<img src="getimage.php?mid={ENTITY_ID}" alt="Module Image" />
+<br/><br/>
+<b>Module Description:</b> {ENTITY_DESC}
+<br/><br/>
+<b>Lock Status:</b> {LOCK_STATUS} {LOCK_LINK}
+<br/><br/>
+<table border="0" width="700" cellpadding="5px">
+  <tr>
+    <td></td>
+    <td></td>
+    <td>Name</td>
+    <td>File Size</td>
+    <td>Revisions</td>
+    <td>Last Edited</td>
+    <td>Upload New Version</td>
+  </tr>
+	<!-- BEGIN no_files -->
+    <td></td>
+    <td></td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+	<!-- END no_files -->
+	<!-- BEGIN file_row -->
+  <tr>
+    <td></td>
+    <td>{file_row.CHECKED_STATUS}</td>
+    <td><a href="download.php?fid={file_row.FILE_ID}">{file_row.FILE_NAME}</a><br/>
+	(<a href="view_files.php?mid={ENTITY_ID}&fid={file_row.FILE_ID}&action=history">History</a> | <a href="view_files.php?mid={ENTITY_ID}&fid={file_row.FILE_ID}&action=delete" onclick="return confirm('Are you sure you want to delete &quot;{file_row.FILE_NAME}&quot; from &quot;{ENTITY_NAME}&quot;? This cannot be undone and all file history will be removed.')">Delete</a>)</td>
+    <td>{file_row.FILE_SIZE}</td>
+    <td>{file_row.FILE_REVISIONS}</td>
+    <td>{file_row.EDIT_DATE} by <a href="view_profile?uid={file_row.EDITOR_ID}">{file_row.EDITOR_NAME}</a></td>
+    <td>
+	<!-- BEGIN upload_row -->
+	<form action="view_files.php?mid={ENTITY_ID}&fid={file_row.FILE_ID}&action=replace" method="post" enctype="multipart/form-data"><input name="file_id" type="hidden" value="{file_row.FILE_ID}" /><input name="ufile[]" type="file" /><br /><input type="submit" name="formsubmit" value="Update" id="submit" /></form>
+	<!-- END upload_row -->
+	{file_row.OTHER_UPLOAD_TXT}
+	</td>
+  </tr>
+	<!-- END file_row -->
+</table>
+<br /><br />
+{MARK_ALL_BTN}
+<!-- BEGIN can_add_file -->
+Upload a New File: <form action="view_files.php?mid={ENTITY_ID}&action=upload" method="post" enctype="multipart/form-data"><input name="ufile[]" type="file" /><br />
+<input type="submit" name="formsubmit" value="Upload" id="submit"/></form>
+<!-- END can_add_file -->
+{OTHER_UPLOAD_TXT}
+<br/><br/>
+<!-- BEGIN can_change_icon -->
+Change Icon: <form action="view_files.php?mid={ENTITY_ID}&action=icon" method="post" enctype="multipart/form-data"><input name="ifile[]" type="file" /><br />
+<input type="submit" name="formsubmit" value="Upload" id="submit"/></form>
+<br/>
+{ICON_ERROR}
+<!-- END can_change_icon -->
+<p>
+Comments:<br/><br/>
+
+<FORM action="view_files.php?mid={ENTITY_ID}&action=comment" method="post">
+  <table>
+    <tr>
+      <td><textarea name="text" rows="3" cols="60"></textarea>
+    </tr>
+    <tr>
+      <td></td>
+      <td>{ERRORS}</td>
+    </tr>
+  </table>
+  <input type="submit" name="formsubmit" value="Submit Comment" id="submit"/>
+</FORM>
+<hr/>
+
+<!-- BEGIN comment -->
+Commented by <a href="view_profile.php?uid={comment.COMMENTER_ID}">{comment.COMMENTER}</a> on {comment.DATE}:<br/>
+&nbsp;{comment.TEXT}<br/><br/><hr/>
+<!-- END comment -->
+</p><br/><br/>
+<a href="view_modules.php?pid={PROJECT_ID}">Return to View Modules in this project</a><br/>
+<a href="view_projects.php">Return to View Projects</a>

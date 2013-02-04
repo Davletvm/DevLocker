@@ -1,0 +1,35 @@
+<h1>Contact Us</h1>
+<p>Need to reach us? If you have any comments, questions, complaints, or concerns about DEVLocker we'd love to hear from you. Just email us using the form below. <p>
+<FORM action="contact_us.php" method="post">
+  <table>
+    <tr>
+      <td>Name:</td>
+      <td><input type="text" name="user" value="{FORM_USER}" /></td>
+    </tr>
+    <tr>
+      <td>Email Address:</td>
+      <td><input type="text" name="email" value="{FORM_EMAIL}" /></td>
+    </tr>
+    <tr>
+      <td>How Can We Help?:</td>
+      <td><select name="help" value="{FORM_HELP}">
+			<option>Account Control Help</option>
+			<option>File Management Assistance</option>
+			<option>Technical Difficulties</option>
+			<option>Bug Reporting</option>
+			<option>Other</option>
+		  </select>
+	  </td>
+    </tr>
+    <tr>
+      <td>Comments:</td>
+      <td><textarea name="comment" value="{FORM_COMMENT}" rows="8" cols="60" ></textarea></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>{ERRORS}</td>
+    </tr>
+  </table>
+  <br/>
+  <input type="submit" name="formsubmit" id="submit" value="Contact Us" />
+</FORM>

@@ -1,0 +1,18 @@
+<FORM action="view_modules.php?pid={PROJECT_ID}&action=add" method="post">
+  Add a new Module:<br/><br/>
+  <table>
+    <tr>
+      <td>Module Name:</td>
+      <td><input type="text" name="name" value="{NAME}" /></td>
+    </tr>
+    <tr>
+      <td>Module Description:</td>
+      <td><textarea name="desc" rows="8" cols="60">{DESC}</textarea>
+    </tr>
+    <tr>
+      <td></td>
+      <td>{ERRORS}</td>
+    </tr>
+  </table>
+  <input type="submit" name="formsubmit" value="Add Module" />
+</FORM>

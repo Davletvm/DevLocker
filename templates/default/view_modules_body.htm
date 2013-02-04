@@ -1,0 +1,99 @@
+<h3>Currently Viewing:  <a href="view_modules.php?pid={PROJECT_ID}">{PROJECT_NAME}</a>, owned by <a href="view_profile.php?id={CREATOR_ID}">{CREATOR_NAME} </a></h3>
+<br/>
+<b>Project Description:</b> {PROJECT_DESC}
+<br/><br/>
+<!-- BEGIN have_module -->
+Claimed modules within the {PROJECT_NAME} project:
+<br/><br/>
+<table border="0" width="100%">
+  <tr>
+    <td></td>
+    <td>Name</td>
+    <td>Action</td>
+  </tr>
+<!-- BEGIN my_module_row -->
+  <tr>
+    <td></td>
+    <td><a href="view_files.php?mid={have_module.my_module_row.MODULE_ID}">{have_module.my_module_row.MODULE_NAME}</a></td>
+	<td>
+	<a href="view_modules.php?pid={PROJECT_ID}&mid={have_module.my_module_row.MODULE_ID}&action=unlock">Unlock</a>
+	<!-- BEGIN my_switch_admin -->
+	| <a href="view_modules.php?pid={PROJECT_ID}&mid={have_module.my_module_row.MODULE_ID}&action=delete" onclick="return confirm('Are you absolutely sure you want to delete the module &quot;{have_module.my_module_row.MODULE_NAME}&quot;? This cannot be undone and all data will be removed.')">Delete Module</a>
+	<!-- END my_switch_admin -->
+	</td>
+  </tr>
+<!-- END my_module_row -->
+</table>
+<!-- END have_module -->
+<br/>
+Modules within the {PROJECT_NAME} project:
+<br/><br/>
+<table border="0" width="100%">
+  <tr>
+    <td></td>
+    <td>Name</td>
+    <td>Locked?</td>
+    <td>Locked By</td>
+    <td>Action</td>
+  </tr>
+<!-- BEGIN module_row -->
+  <tr>
+    <td><img src="getimage.php?mid={module_row.MODULE_ID}" alt="Module Image" /></td>
+    <td><a href="view_files.php?mid={module_row.MODULE_ID}">{module_row.MODULE_NAME}</a></td>
+    <td>{module_row.LOCKED}</td>
+    <td>{module_row.LOCKED_BY}</td>
+    <td>
+	<a href="view_modules.php?pid={PROJECT_ID}&mid={module_row.MODULE_ID}&action={module_row.LOCK_ACTION}">{module_row.LOCK_TXT}</a>
+	{module_row.OTHER_LOCK_TXT}
+	<!-- BEGIN switch_admin -->
+	| <a href="view_modules.php?pid={PROJECT_ID}&mid={module_row.MODULE_ID}&action=delete" onclick="return confirm('Are you absolutely sure you want to delete the module &quot;{module_row.MODULE_NAME}&quot;? This cannot be undone and all data will be removed.')">Delete Module</a>
+	<!-- END switch_admin -->
+	</td>
+  </tr>
+<!-- END module_row -->
+</table>
+<!-- BEGIN switch_add_module -->
+<br/>
+<a href = "view_modules.php?pid={PROJECT_ID}&action=add"><button id="submit">Add a Module</button></a><br />
+<!-- END switch_add_module -->
+<hr/>
+<p>
+Users working on this project:
+<br/>
+<table border="0" width="100%">
+<!-- BEGIN user_row -->
+  <tr>
+    <td></td>
+    <td><a href="view_profile.php?uid={user_row.UID}">{user_row.USERNAME}</a></td>
+  </tr>
+<!-- END user_row -->
+</table><br/>
+<!-- BEGIN user_is_owner -->
+<a href = "share.php?pid={PROJECT_ID}"><button type="button" id="submit">Share Project</button></a>
+<a href ="permissions.php?pid={PROJECT_ID}"><button type="button" id="submit">Manage Users</button></a>
+<!-- END user_is_owner -->
+</p>
+<hr/>
+
+<p>
+Comments:<br/><br/>
+
+<FORM action="view_modules.php?pid={PROJECT_ID}&action=comment" method="post">
+  <table>
+    <tr>
+      <td><textarea name="text" rows="3" cols="60"></textarea>
+    </tr>
+    <tr>
+      <td></td>
+      <td>{ERRORS}</td>
+    </tr>
+  </table>
+  <input type="submit" name="formsubmit" value="Submit Comment" id="submit"/>
+</FORM>
+<hr/>
+
+<!-- BEGIN comment -->
+Commented by <a href="view_profile.php?uid={comment.COMMENTER_ID}">{comment.COMMENTER}</a> on {comment.DATE}:<br/>
+&nbsp;{comment.TEXT}<br/><br/><hr/>
+<!-- END comment -->
+</p>
